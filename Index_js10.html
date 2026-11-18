@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robux Top Up</title>
+    <!-- ភ្ជាប់ Telegram Web App SDK (សំខាន់បំផុត) -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background-color: #f4f4f9; }
+        .card { background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        input, select, button { width: 100%; padding: 10px; margin-top: 10px; border-radius: 5px; border: 1px solid #ccc; }
+        button { background-color: #0088cc; color: white; border: none; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h3>ទិញ Robux (Top Up)</h3>
+    
+    <label>ឈ្មោះគណនី Roblox (Username):</label>
+    <input type="text" id="username" placeholder="បញ្ចូល Roblox Username...">
+
+    <label>ជ្រើសរើសកញ្ចប់ Robux:</label>
+    <select id="package">
+        <option value="80 Robux - $1.00">80 Robux - $1.00</option>
+        <option value="400 Robux - $5.00">400 Robux - $5.00</option>
+        <option value="800 Robux - $10.00">800 Robux - $10.00</option>
+    </select>
+
+    <button onclick="sendOrder()">បញ្ជាទិញឥឡូវនេះ</button>
+</div>
+
+<script>
+    // ចាប់ផ្តើមដំណើរការ Telegram Web App
+    const tg = window.Telegram.WebApp;
+    tg.expand(); // ពង្រីកផ្ទាំងឱ្យពេញអេក្រង់
+
+    function sendOrder() {
+        const username = document.getElementById("username").value;
+        const pkg = document.getElementById("package").value;
+
+        if (!username) {
+            alert("សូមបញ្ចូល Roblox Username ជាមុនសិន!");
+            return;
+        }
+
+        // ផ្ញើទិន្នន័យត្រឡប់ទៅឱ្យ Telegram Bot វិញ
